@@ -4,6 +4,13 @@ yearEl.textContent = new Date().getFullYear();
 const btnNav = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
 
+const form = document.querySelector(".cta-form");
+const cta_input = document.querySelector(".cta-input");
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    cta_input.value = ""
+});
+
 btnNav.addEventListener("click", () => {
     headerEl.classList.toggle("nav-open");
 });
