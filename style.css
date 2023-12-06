@@ -1,0 +1,91 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --clr-1: #052b2f;
+  --clr-2: #073438;
+  --clr-3: #0e4b50;
+  --clr-4: #2d8f85;
+  --clr-5: #637c54;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: var(--clr-2);
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.heading-primary {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-top: 1.6rem;
+}
+
+.section-challenges {
+  padding: 0 3.4rem;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 8.4rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.6rem;
+  background: var(--clr-1);
+  padding: 1em 1.6em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -0.3rem;
+  z-index: -1;
+  background: var(--clr-5);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  border-radius: inherit;
+  animation: rotation 20s linear infinite;
+}
+
+.btn::after {
+  filter: blur(3.5rem);
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
