@@ -281,10 +281,6 @@
 }
 
 @media (max-width: 27.5em) {
-  html {
-    font-size: 45% !important;
-  }
-
   .social-details {
     text-align: end !important;
   }
@@ -317,11 +313,13 @@
 }
 
 @media (max-width: 25em) {
-  html {
-    font-size: 40% !important;
-  }
-
   .section-hero .section-services {
     bottom: -107%;
+  }
+}
+
+@media (max-width: 21em) {
+  .margin-botton-sm {
+    margin-bottom: 1rem;
   }
 }
