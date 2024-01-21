@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Calculator</title>
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/investment-calculator-logo.png" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <figure class="app-logo">
+          <img
+            src="./assets/investment-calculator-logo.png"
+            alt="Investment Calculator logo"
+          />
+        </figure>
+        <h1 class="header__heading-primary">Investment Calculator</h1>
+      </header>
+
+      <form class="input-form">
+        <div class="user-inputs">
+          <label for="initial_investment" class="input-field-name"
+            >initial investment</label
+          >
+          <input type="number" id="initial_investment" class="user-input" />
+        </div>
+
+        <div class="user-inputs">
+          <label for="annual_investment" class="input-field-name"
+            >annual investment</label
+          >
+          <input type="number" id="annual_investment" class="user-input" />
+        </div>
+
+        <div class="user-inputs">
+          <label for="expected_return" class="input-field-name"
+            >expected return</label
+          >
+          <input type="number" id="expected_return" class="user-input" />
+        </div>
+
+        <div class="user-inputs">
+          <label for="duration" class="input-field-name">duration</label>
+          <input type="number" id="duration" class="user-input" />
+        </div>
+      </form>
+
+      <table class="result">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Investment Value</th>
+            <th>Interest (Year)</th>
+            <th>Total Interest</th>
+            <th>Invested Capital</th>
+          </tr>
+        </thead>
+        <tbody class="table-body"></tbody>
+      </table>
+    </div>
+
+    <script src="./scripts/result.js" type="module"></script>
+  </body>
+</html>
