@@ -40,40 +40,51 @@ userInputs.forEach(input => {
 
 
 function resultUiUpdate() {
+    let displayHTML;
     if (!inputIsValid) {
-        table.style.display = "none";
-        container.insertAdjacentHTML("beforeend", para);
-        return
+        table.innerHTML = "";
+        displayHTML = para;
     } else {
-        table.style.display = "block";
-        document.querySelector(".center")?.remove();
-    }
-    const tableBody = document.querySelector(".table-body");
-    tableBody.innerHTML = "";
-    const resultsData = calculateInvestmentResults(userData);
-    const initialInvestment = resultsData[0].valueEndOfYear -
-        resultsData[0].interest -
-        resultsData[0].annualInvestment;
+        table.innerHTML = "";
+        const resultsData = calculateInvestmentResults(userData);
+        const initialInvestment = resultsData[0].valueEndOfYear -
+            resultsData[0].interest -
+            resultsData[0].annualInvestment;
 
-    let displayHTML = "";
-    resultsData.forEach(data => {
-        const totalInterest =
-            data.valueEndOfYear -
-            data.annualInvestment * data.year -
-            initialInvestment;
-        const totalAmountInvested = data.valueEndOfYear - totalInterest;
-
-        displayHTML += `
-            <tr>
-                <td>${data.year}</td>
-                <td>${formatter.format(data.valueEndOfYear)}</td>
-                <td>${formatter.format(data.interest)}</td>
-                <td>${formatter.format(totalInterest)}</td>
-                <td>${formatter.format(totalAmountInvested)}</td>
-            </tr>
+        displayHTML = `
+        <thead>
+        <tr>
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Interest (Year)</th>
+          <th>Total Interest</th>
+          <th>Invested Capital</th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        
+      
         `;
-    });
-    tableBody.insertAdjacentHTML("afterbegin", displayHTML);
+        resultsData.forEach(data => {
+            const totalInterest =
+                data.valueEndOfYear -
+                data.annualInvestment * data.year -
+                initialInvestment;
+            const totalAmountInvested = data.valueEndOfYear - totalInterest;
+
+            displayHTML += `
+        <tr>
+          <td>${data.year}</td>
+          <td>${formatter.format(data.valueEndOfYear)}</td>
+          <td>${formatter.format(data.interest)}</td>
+          <td>${formatter.format(totalInterest)}</td>
+          <td>${formatter.format(totalAmountInvested)}</td>
+      </tr>
+        `;
+        });
+        displayHTML += "</tbody>"
+    }
+    table.insertAdjacentHTML("afterbegin", displayHTML);
 }
 
 resultUiUpdate();
