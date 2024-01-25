@@ -258,6 +258,7 @@ function dynamicRenderAddedProduct(selectedProduct) {
     document.querySelector(".btn-delete").addEventListener("click", deleteAddedProjectHandler);
 
     document.querySelector(".add-task-btn").addEventListener("click", addTaskHandler);
+    selectedProjectTaskRemove();
 }
 
 let selectedProduct;
@@ -305,6 +306,7 @@ function deleteAddedProjectHandler() {
 function addTaskHandler() {
 
     let taskInput = document.querySelector(".add-task-input");
+    if (taskInput.value.length <= 0) return;
     const randomTaskId = Math.random();
 
     const task = {
@@ -325,12 +327,12 @@ function addTaskHandler() {
 }
 
 function dynamicRenderProjectTasks() {
-    taskHTML = "";
     const selectedProjectTask = projectData.tasks.filter(task => {
         return task.currentProjectId === projectData.selectedProjectId;
     });
 
     console.log(selectedProjectTask);
+    taskHTML = "";
 
     selectedProjectTask.forEach(task => {
         taskHTML += `
@@ -357,8 +359,6 @@ function selectedProjectTaskRemove() {
             const filteredTaskList = projectData.tasks.filter(task => {
                 return task.taskId !== clickedBtnTaskId;
             });
-
-            console.log(filteredTaskList);
 
             const data = {
                 ...projectData,
