@@ -207,7 +207,31 @@ function renderProjectTitleList() {
     projectTitleDispEle.insertAdjacentHTML("afterbegin", projectTitleList);
 }
 
+function guardTaskRender() {
+    const findTask = projectData.tasks.filter(task => {
+        return task.currentProjectId === projectData.selectedProjectId;
+    });
+
+    if (findTask.length > 0) {
+        taskHTML = "";
+        findTask.forEach(task => {
+            taskHTML += `
+            <div class="tasks">
+                <div class="task">
+                    <p class="task-name">${task.taskName}</p>
+                    <button class="task-clr-btn btn" data-task-id="${task.taskId}">Clear</button>
+                </div>
+            </div>
+        `;
+        });
+    } else {
+        taskHTML = "";
+        taskHTML = noTaskHTML;
+    }
+}
+
 function dynamicRenderAddedProduct(selectedProduct) {
+    guardTaskRender();
     addedProjectHTML = `
     <div class="added-project">
         <div class="added-project-title">
@@ -223,7 +247,7 @@ function dynamicRenderAddedProduct(selectedProduct) {
             <button for="add-task" class="add-task-btn btn">Add Task</button>
         </div>
         <div class="task-list">
-            ${projectData.tasks.length > 0 ? taskHTML : noTaskHTML}
+            ${taskHTML}
         </div>
     </div>
     `;
@@ -251,11 +275,6 @@ function renderAddProjectHandler(e) {
     });
 
     dynamicRenderAddedProduct(selectedProduct);
-
-    // document.querySelector(".btn-delete").addEventListener("click", deleteAddedProjectHandler);
-
-    // document.querySelector(".add-task-btn").addEventListener("click", addTaskHandler);
-
 }
 
 function renderAddedProject() {
@@ -284,8 +303,6 @@ function deleteAddedProjectHandler() {
 }
 
 function addTaskHandler() {
-    // const form = document.querySelector(".task-add-form");
-    // form.addEventListener("submit", (e) => e.preventDefault());
 
     let taskInput = document.querySelector(".add-task-input");
     const randomTaskId = Math.random();
@@ -304,22 +321,6 @@ function addTaskHandler() {
     projectData = data;
     taskInput.value = "";
 
-    // const selectedProjectTask = projectData.tasks.filter(task => {
-    //     return task.currentProjectId === projectData.selectedProjectId;
-    // });
-
-    // selectedProjectTask.forEach(task => {
-    //     taskHTML += `
-    //     <div class="tasks">
-    //         <div class="task">
-    //             <p class="task-name">${task.taskName}</p>
-    //             <button class="task-clr-btn btn" data-task-id="${task.taskId}">Clear</button>
-    //         </div>
-    //     </div>
-    // `;
-    // });
-
-    // dynamicRenderAddedProduct(selectedProduct);
     dynamicRenderProjectTasks();
 }
 
@@ -328,6 +329,8 @@ function dynamicRenderProjectTasks() {
     const selectedProjectTask = projectData.tasks.filter(task => {
         return task.currentProjectId === projectData.selectedProjectId;
     });
+
+    console.log(selectedProjectTask);
 
     selectedProjectTask.forEach(task => {
         taskHTML += `
