@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Managemant</title>
+    <link rel="stylesheet" href="./css/modern-normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./scripts/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="section-projects">
+        <div class="project-list-container">
+          <h1 class="heading-primary">your projects</h1>
+          <button class="add-project-btn btn">+ Add Project</button>
+          <div class="project-title-list">
+            <ol class="project-title-listed"></ol>
+          </div>
+        </div>
+
+        <div class="project-render-dynamic-container">
+          <!-- <div class="no-project">
+            <figure class="no-project-img">
+              <img
+                src="./assets/no-projects.png"
+                alt="pad with paper and pen"
+              />
+            </figure>
+            <h2 class="heading-secondary">No Project Selected</h2>
+            <p class="no-project-desc">
+              Select a project or get started with a new one
+            </p>
+            <button class="create-project-btn btn">Create new project</button>
+          </div> -->
+
+          <!-- <div class="add-project">
+            <div class="add-cancel-btn">
+              <button class="btn-cancel btn">Cancel</button>
+              <button class="btn-add btn">Save</button>
+            </div>
+            <form class="add-project-form">
+              <div class="form-field">
+                <label for="title" class="add-project-label">title</label>
+                <input type="text" class="add-project-input" id="title" />
+              </div>
+
+              <div class="form-field">
+                <label for="description" class="add-project-label"
+                  >description</label
+                >
+                <textarea
+                  id="description"
+                  class="add-project-input"
+                  cols="30"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="form-field">
+                <label for="date" class="add-project-label">due date</label>
+                <input type="date" class="add-project-input" id="date" />
+              </div>
+            </form>
+          </div> -->
+
+          <!-- <div class="added-project">
+            <div class="added-project-title">
+              <h1 class="added-project-heading">{Added Project Title}</h1>
+              <button class="btn-delete btn">Delete</button>
+            </div>
+            <p class="project-due-date">Jan 25, 2024</p>
+            <p class="project-description">just a test project</p>
+            <hr />
+            <h2 class="project-tasks-title">Tasks</h2>
+            <form class="task-add-form">
+              <input type="text" class="add-task-input" id="add-task" />
+              <label for="add-task">Add Task</label>
+            </form>
+            <div class="task-list">
+              <div class="tasks">
+                <div class="task">
+                  <p class="task-name">sadadad</p>
+                  <button class="task-clr-btn btn">Clear</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </div>
+
+    <dialog class="dialog-modal">
+      <h4>Invalid Input</h4>
+      <p>Oops ... looks like you forgot to enter a value.</p>
+      <p>Please make sure you provided a valid value for every input field.</p>
+      <form method="dialog">
+        <button class="close-modal-btn btn">Okay</button>
+      </form>
+    </dialog>
+  </body>
+</html>
