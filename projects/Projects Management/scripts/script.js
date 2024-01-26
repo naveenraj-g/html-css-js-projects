@@ -331,7 +331,6 @@ function dynamicRenderProjectTasks() {
         return task.currentProjectId === projectData.selectedProjectId;
     });
 
-    console.log(selectedProjectTask);
     taskHTML = "";
 
     selectedProjectTask.forEach(task => {
